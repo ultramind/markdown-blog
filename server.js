@@ -2,6 +2,7 @@ const express = require('express');
 const articleRouter = require('./routes/articles');
 const Article = require('./models/article');
 const mongose = require('mongoose');
+const port = process.env.PORT || 5000;
 
 const app = express();
 
@@ -18,4 +19,6 @@ app.get('/', async(req, res) =>{
 
 
 app.use('/articles', articleRouter);
-app.listen(5000);
+app.listen(port,()=>{
+    console.log('Server started on port ' + port)
+});
